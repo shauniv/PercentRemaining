@@ -17,12 +17,12 @@ class PercentRemainingApp extends Application.AppBase {
     }
 
     // Return the initial view of your application here
-    function getInitialView() as Array<Views or InputDelegates>? {
-        return [ new PercentRemaining() ] as Array<Views or InputDelegates>;
+    function getInitialView() as [Views] or [Views, InputDelegates]  {
+        return [ new PercentRemaining() ];
     }
 
 }
 
-function getApp() as FirstIQAppApp {
-    return Application.getApp() as FirstIQAppApp;
+function getApp() as PercentRemainingApp {
+    return Application.getApp() as PercentRemainingApp;
 }

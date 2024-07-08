@@ -13,9 +13,17 @@ class PercentRemaining extends WatchUi.SimpleDataField {
 
     function compute(info as Activity.Info) as Numeric or Duration or String or Null 
     {
+        var elapsedDistance = 0.0;
+        if (info.elapsedDistance != null)
+        {
+            elapsedDistance = info.elapsedDistance;
+        }
         if (info.distanceToDestination != null and info.distanceToDestination > 0)
         {
-            return (100.0 - (info.elapsedDistance / (info.elapsedDistance + info.distanceToDestination) * 100)).format("%0.1f") + "%";
+            if (elapsedDistance + info.distanceToDestination > 0)
+            {
+                return (100.0 - (elapsedDistance / (elapsedDistance + info.distanceToDestination) * 100)).format("%0.1f") + "%";
+            }
         }
         return "--";
     }
